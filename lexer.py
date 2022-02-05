@@ -23,7 +23,7 @@ class Lexer:
 		self.ind = 0
 		self.cur = self.code[self.ind] if self.ind < len(self.code) else None
 		self.DIGITS = "01234567890"
-		self.LETTERS = string.ascii_letters
+		self.LETTERS = string.ascii_letters + "_"
 		self.keywords = [
 			"refard",
 			"FARDING",
