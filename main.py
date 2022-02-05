@@ -43,14 +43,9 @@ class TokenFollower:
   def execute(self):
     #help me plz lol
     pass
-    cTokNum = 0
-    programStart = False
+    
     for token in self.tokens:
-      
-      if (token.type != "KEYWORD" and token.value != "FARDING") and programStart == False:
-        self.error("SyntaxError", 0, "Must start program with keyword 'FARDING.")
-      else:
-        programStart = True
+ 
 
       if token.type == "KEYWORD":
         if token.value=="refard": pass
