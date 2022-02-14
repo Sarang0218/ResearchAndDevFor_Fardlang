@@ -1,11 +1,9 @@
 # hehe fard dis is a fardy comment
 
-FARDING # begin program
+math = 3
 
-refard FardFunction& # no arguments bcuz fard
-			fard "fardy string"
-			fardyNumber = 0
-			fardyNumber += 1
-			fard "%fardyNumber"
+fards? math == 3
+  fard "equals"
+farded
 
-STOP_FARDING # end program
+fard math

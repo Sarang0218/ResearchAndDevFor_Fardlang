@@ -1,4 +1,4 @@
-print("START")
+
 code = ""
 def cleanup():
   with open("main.py", "r") as codefile:
@@ -7,12 +7,13 @@ def cleanup():
   #don't worry it only replaces tab
 
   #nonono that dangerous we copy pasta from main
-  with open("main.py", "w") as newFile:
+  with open("main", "w") as newFile:
     newFile.write(code)
 cleanup()
 
+
+
 code =  """
-=test
 
 # hehe fard dis is a fardy comment
 
@@ -27,36 +28,47 @@ refard FardFunction& # no arguments bcuz fard
 STOP_FARDING # end program
 """
 
+with open("main.gas", "r") as gas:
+  code = gas.read()
+
+code = code.replace("\t", "  ")
+
 from lexer import Lexer
+#from parser import Parser
 
 lexer = Lexer(code)
+tokens = lexer.tokenizeFard()
 
 
-class TokenFollower:
-  def __init__(self, tokens):
-    self.token = tokens
-  def error(error,msg, linenum, expl):
-    print("Congrats you got an error... In FardLang")
-    
-    print(f"{error} at {linenum}\n {expl}")
-    print("should probably reconsider your skill level")
-  def execute(self):
-    #help me plz lol
-    pass
-    
-    for token in self.tokens:
- 
+####################################################################
+#                           PARSER TEST                            #
+####################################################################
+from fardparser import Parser
+import astPrint
+lexer = Lexer(code)
+parser = Parser(lexer.tokenizeFard(), code)
 
-      if token.type == "KEYWORD":
-        if token.value=="refard": pass
-          
-      
-      
+ast = parser.parse()
 
+# from compiler import Compiler
+#
+# compiler = Compiler(ast, code)
 
+# compiler.compile()
 
+# astPrint.astPrint(ast)
+from interpreter import Interpreter, Scope
+interpreter = Interpreter(ast, scope=Scope(parent=None, top=True))
+interpreter.run()
 
-print("\n".join(map(lambda x: x.__repr__(), lexer.tokenizeFard())))
+#interpreter.currentScope.executeFunction("main")
+
+#lexedMath = lexerMath.tokenizeFard()
+#parser = Parser(lexedMath, math)
+#print(parser.expr())
+##################
+
+#print("\n".join(map(lambda x: x.__repr__(), lexer.tokenizeFard())))
 
 #fine
 """
@@ -72,5 +84,18 @@ refard FardFunction& # no arguments bcuz fard
 
 STOP_FARDING # end program
 """
+"""CODE FROM RANDOM SITE"""
+"""
+
+"""
+
+# do you know howw to add precedence?
+#well I've written a paper about it once
+
+#you need to make a stack
+#wait hold on imma get the pdf
 
 
+#you can convert the code to reverse polish notation
+#then you can calculate the code with a stack
+#hold on
